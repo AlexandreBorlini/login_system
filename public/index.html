@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        LOGIN SYSTEM
+        
+    </head><br><br>
+
+    <body>
+
+
+    </body>
+
+    <label for="loginLabel">LOGIN:</label>
+    <input type="text" id="login" name="loginInput"><br><br>
+
+    <label for="senhaLabel">SENHA:</label>
+    <input type="text" id="senha" name="senhaInput"><br><br>
+
+    <button id = "entrar" onclick="btnEntrarClick()">ENTRAR</button>
+    <button id = "registrar" onclick="btnRegistrarClick()">REGISTRAR</button>
+
+    <script>
+
+        async function btnEntrarClick()
+        {
+
+            const id = document.getElementById('login').value;
+            const senha = document.getElementById('senha').value;
+
+            const data = { id , senha };
+            const options = {
+
+                method: 'POST',
+                headers: {
+
+                    "Content-Type": "application/json"
+                },
+
+                body: JSON.stringify(data)
+            };
+
+            const response = await fetch('/login', options);
+            const statusText = await response.json();
+
+            alert(statusText.text);
+        }
+
+        async function btnRegistrarClick(){
+
+            const id = document.getElementById('login').value;
+            const senha = document.getElementById('senha').value;
+
+            const data = { id , senha };
+            const options = {
+
+                method: 'POST',
+                headers: {
+
+                    "Content-Type": "application/json"
+                },
+
+                body: JSON.stringify(data)
+            };
+
+            const response = await fetch('/registrar', options);
+            const statusText = await response.json();
+
+            alert(statusText.text);
+        }
+
+    </script>
+
+</html>
